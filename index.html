@@ -186,6 +186,9 @@
         let model = localStorage.getItem('model') || 'qwen-plus';
         let messages = [];
         
+        // Tokens Plan 专用 API 地址
+        const API_URL = 'https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions';
+        
         // 页面加载时检查设置
         window.onload = function() {
             if (!apiKey) {
@@ -261,7 +264,7 @@
             showLoading();
             
             try {
-                const response = await fetch('https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions', {
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
